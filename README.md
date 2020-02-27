@@ -1,2 +1,6 @@
- ![](https://user-images.githubusercontent.com/47387086/75441063-a3a09300-5965-11ea-8153-4b9ef3939c14.gif){ width="800" height="600" style="display: block; margin: 0 auto" }
- 
+ #Simple Weather App
+ <br>
+ <br>
+ <br>
+ <h1>Demo</h1>
+ ![](https://user-images.githubusercontent.com/47387086/75441063-a3a09300-5965-11ea-8153-4b9ef3939c14.gif) 
