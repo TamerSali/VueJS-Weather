@@ -11,17 +11,18 @@
 
 [v-cloak]:before {
   content: "";
+  box-sizing: border-box;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   width: 100px;
   height: 100px;
   border-radius: 50%;
   border: 2px solid #ccc;
   border-top-color: #333;
   animation: spinner 0.6s linear infinite;
+  white-space: nowrap;
   overflow: hidden;
 }
 
