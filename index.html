@@ -23,98 +23,108 @@
     />
     <!-- Optional CSS -->
     <link rel="stylesheet" href="main.css" />
-   
+
     <title>Weather &copy;</title>
   </head>
   <body>
-    <div id="app" class="position-relative" v-cloak>
-      <div class="container-fluid text-center position-absolute">
-        <div class="row d-flex justify-content-center align-item-center">
-          <div class="col-12  mt-3 mt-md-5 ">
-            <input
-              type="text"
-              name="Search"
-              placeholder="Search..."
-              class="form-control search-bar"
-              v-model="query"
-              @keyup.enter="fetchWeather"
-            />
-            <div class="pt-md-5 pb-md-5 pt-0 pb-0 " >
-              <div
-                class="mt-3 mt-sm-5 "
-                v-if="typeof weather.main!='undefined' "
-              >
-                <transition
-                  enter-active-class="animated bounceIn"
-                   mode="out-in"
-                >
-                  <h2 class="text-white  mb-sm-3 mb-2" :key="weather.name">
-                    {{ weather.name }},{{ weather.sys.country }}
-                  </h2>
-                </transition>
-                <transition
-                  enter-active-class="animated bounceIn"
-                   appears
-                >
-                  <h6 class="text-light  mb-sm-3 mb-2">
-                    <i>{{dateBuilder()}}</i>
-                  </h6>
-                </transition>
+    <div id="app" class="position-relative">
+      <div v-cloak>
+        <div class="v-cloak--inline">
+          <!-- Parts that will be visible before compiled your HTML -->
+          <div class="spinner"></div>
+          <!-- this is a cool spinner taken from spinKit -->
+        </div>
 
-                <transition
-                  enter-active-class="animated fadeIn"
-                   mode="out-in"
-                >
-                  <h1 class="text-black  mb-sm-3 mb-2" :key="weather.main.temp">
-                    <b class=" p-2 bg-light rounded"
-                      >{{ Math.round(weather.main.temp) }}°c</b
+        <div class="v-cloak--hidden">
+          <div class="container-fluid text-center position-absolute">
+            <div class="row d-flex justify-content-center align-item-center">
+              <div class="col-12 mt-3 mt-md-5">
+                <input
+                  type="text"
+                  name="Search"
+                  placeholder="Search..."
+                  class="form-control search-bar"
+                  v-model="query"
+                  @keyup.enter="fetchWeather"
+                />
+                <div class="pt-md-5 pb-md-5 pt-0 pb-0">
+                  <div
+                    class="mt-3 mt-sm-5"
+                    v-if="typeof weather.main!='undefined' "
+                  >
+                    <transition
+                      enter-active-class="animated bounceIn"
+                      mode="out-in"
                     >
-                  </h1>
-                </transition>
-                <transition
-                  enter-active-class="animated tada"
-                   mode="out-in"
-                >
-                  <h2 class="text-white mb-sm-3 mb-2" :key="weather.main">
-                    {{weather.weather[0].main}}
-                  </h2>
-                </transition>
+                      <h2 class="text-white mb-sm-3 mb-2" :key="weather.name">
+                        {{ weather.name }},{{ weather.sys.country }}
+                      </h2>
+                    </transition>
+                    <transition enter-active-class="animated bounceIn" appears>
+                      <h6 class="text-light mb-sm-3 mb-2">
+                        <i>{{dateBuilder()}}</i>
+                      </h6>
+                    </transition>
+
+                    <transition
+                      enter-active-class="animated fadeIn"
+                      mode="out-in"
+                    >
+                      <h1
+                        class="text-black mb-sm-3 mb-2"
+                        :key="weather.main.temp"
+                      >
+                        <b class="p-2 bg-light rounded"
+                          >{{ Math.round(weather.main.temp) }}°c</b
+                        >
+                      </h1>
+                    </transition>
+                    <transition
+                      enter-active-class="animated tada"
+                      mode="out-in"
+                    >
+                      <h2 class="text-white mb-sm-3 mb-2" :key="weather.main">
+                        {{weather.weather[0].main}}
+                      </h2>
+                    </transition>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <transition name="fade" appears>
+          <div :key="weather.main">
+            <img
+              src="Resources/clear.gif"
+              v-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Clear'"
+            />
+
+            <img
+              src="Resources/clouds.gif"
+              v-else-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Clouds'"
+            />
+            <img
+              src="Resources/rainy.gif"
+              v-else-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Rain'"
+            />
+            <img
+              src="Resources/haze.gif"
+              v-else-if="typeof weather.main != 'undefined' && (weather.weather[0].main =='Mist' ||weather.weather[0].main =='Haze' || weather.weather[0].main =='Fog')"
+            />
+
+            <img
+              src="Resources/snow.gif"
+              v-else-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Snow'"
+            />
+
+            <img
+              src="Resources/weather.jpg"
+              v-else="typeof weather.main != 'undefined'"
+            />
+          </div>
+        </transition>
       </div>
-      <transition name="fade" appears >
-        <div :key="weather.main">
-          <img
-            src="Resources/clear.gif"
-            v-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Clear'"
-          />
-
-          <img
-            src="Resources/clouds.gif"
-            v-else-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Clouds'"
-          />
-          <img
-            src="Resources/rainy.gif"
-            v-else-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Rain'"
-          />
-          <img
-            src="Resources/haze.gif"
-            v-else-if="typeof weather.main != 'undefined' && (weather.weather[0].main =='Mist' ||weather.weather[0].main =='Haze' || weather.weather[0].main =='Fog')"
-          />
-
-          <img
-            src="Resources/snow.gif"
-            v-else-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Snow'"
-          />
-
-          <img
-            src="Resources/weather.jpg"
-            v-else="typeof weather.main != 'undefined'"
-          />
-        </div>
-      </transition>
     </div>
 
     <!-- Optional JavaScript -->
