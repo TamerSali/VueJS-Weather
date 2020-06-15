@@ -1,9 +1,14 @@
 [v-cloak] > * {
   display: none;
 }
-[v-cloak]::before {
-  content: "Loading…";
+.loading {
+  height: 100vh;
+  background-image: url(https://lh3.googleusercontent.com/proxy/LsweVGNczGIaBeZzTu9zMsel5epVFzT0B2AffH_0GF2GC7QqrJ45kkcPVDLsJE2pN_DVDtavSV-6QTCJlDU-kI5FO57aEPGhulzy8d18WI1zOuHH_zYRonAnKpaeXFLA);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 5%;
 }
+
 img {
   width: 100%;
 }
