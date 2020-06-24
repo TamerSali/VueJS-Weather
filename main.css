@@ -10,12 +10,20 @@
 }
 
 img {
+  height: 100vh;
   width: 100%;
 }
 
-#app {
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100vh;
+ 
+ }
+ 
+body {
   font-family: "montserrat", sans-serif;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .search-bar {

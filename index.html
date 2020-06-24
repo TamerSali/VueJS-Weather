@@ -29,10 +29,10 @@
   <body>
     <div id="app" class="position-relative" v-cloak>
       <div class="container-fluid text-center position-absolute">
-        <div class="row d-flex justify-content-center align-item-center">
-          <div class="loading col-12" v-if="loading"></div>
+        <div class="loading col-12" v-if="loading"></div>
 
-          <div class="col-12 mt-3 mt-md-5" v-else>
+        <div class="row d-flex justify-content-center align-item-center" v-else>
+          <div class="col-12 mt-3 mt-md-5 content">
             <input
               type="text"
               name="Search"
@@ -41,38 +41,33 @@
               v-model="query"
               @keyup.enter="fetchWeather"
             />
-            <div class="pt-md-5 pb-md-5 pt-0 pb-0">
-              <div
-                class="mt-3 mt-sm-5"
-                v-if="typeof weather.main!='undefined' "
-              >
-                <transition
-                  enter-active-class="animated bounceIn"
-                  mode="out-in"
-                >
-                  <h2 class="text-white mb-sm-3 mb-2" :key="weather.name">
-                    {{ weather.name }},{{ weather.sys.country }}
-                  </h2>
-                </transition>
-                <transition enter-active-class="animated bounceIn" appears>
-                  <h6 class="text-light mb-sm-3 mb-2">
-                    <i>{{dateBuilder()}}</i>
-                  </h6>
-                </transition>
+            <div v-if="typeof weather.main!='undefined' ">
+              <transition enter-active-class="animated bounceIn" mode="out-in">
+                <h1 class="text-white mb-sm-3 mb-3" :key="weather.name">
+                  {{ weather.name }},{{ weather.sys.country }}
+                </h1>
+              </transition>
+              <transition enter-active-class="animated bounceIn" appears>
+                <h4 class="text-light mb-sm-3 mb-4">
+                  <i>{{dateBuilder()}}</i>
+                </h4>
+              </transition>
 
-                <transition enter-active-class="animated fadeIn" mode="out-in">
-                  <h1 class="text-black mb-sm-3 mb-2" :key="weather.main.temp">
-                    <b class="p-2 bg-light rounded"
-                      >{{ Math.round(weather.main.temp) }}°c</b
-                    >
-                  </h1>
-                </transition>
-                <transition enter-active-class="animated tada" mode="out-in">
-                  <h2 class="text-white mb-sm-3 mb-2" :key="weather.main">
-                    {{weather.weather[0].main}}
-                  </h2>
-                </transition>
-              </div>
+              <transition enter-active-class="animated fadeIn" mode="out-in">
+                <h1
+                  class="text-black mb-sm-3 mt-4 mb-3"
+                  :key="weather.main.temp"
+                >
+                  <b class="p-2 bg-light rounded"
+                    >{{ Math.round(weather.main.temp)}}°c</b
+                  >
+                </h1>
+              </transition>
+              <transition enter-active-class="animated tada" mode="out-in">
+                <h2 class="text-white mb-sm-3 mb-2" :key="weather.main">
+                  {{weather.weather[0].main}}
+                </h2>
+              </transition>
             </div>
           </div>
         </div>
@@ -113,21 +108,5 @@
     <!-- Optional JavaScript -->
     <script src="vue.js"></script>
     <script src="main.js"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
