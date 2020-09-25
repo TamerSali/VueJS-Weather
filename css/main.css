@@ -1,4 +1,4 @@
-[v-cloak] > * {
+[v-cloak] {
   display: none;
 }
 * {
@@ -71,10 +71,10 @@ h3 {
 .error-log p {
   color: rgba(255, 255, 255, 1);
   background-color: #d72828;
- }
+}
 .error-log img {
-height: 100px;
-  }
+  height: 100px;
+}
 .fade-enter {
   opacity: 0;
 }
