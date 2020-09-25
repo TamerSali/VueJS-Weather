@@ -14,24 +14,53 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
     />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
     <!-- Optional CSS -->
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
 
     <title>Weather &copy;</title>
   </head>
   <body>
-    <div id="app" class="position-relative" v-cloak>
-      <div class="container-fluid text-center position-absolute">
-        <div class="loading col-12" v-if="loading"></div>
+    <main id="app" v-cloak>
+      <div class="container" :style="coverImage">
+        <div class="content">
+          <input
+            type="text"
+            name="Search"
+            placeholder="Search..."
+            class="search-bar"
+            v-model="query"
+            @keyup.enter="fetchWeather"
+          />
+          <div class="info" v-if="typeof weather.main != 'undefined'">
+            <transition enter-active-class="animated bounceIn" mode="out-in">
+              <h1 :key="weather.name">
+                {{ weather.name }},{{ weather.sys.country }}
+              </h1>
+            </transition>
+            <transition enter-active-class="animated bounceIn" appears>
+              <h3>
+                <i>{{dateBuilder}}</i>
+              </h3>
+            </transition>
+            <transition enter-active-class="animated fadeIn" mode="out-in">
+              <h1 class="temperature" :key="weather.main.temp">
+                <b>{{ Math.round(weather.main.temp)}}°c</b>
+              </h1>
+            </transition>
+            <transition enter-active-class="animated tada" mode="out-in">
+              <h2 :key="weather.main">{{weather.weather[0].main}}</h2>
+            </transition>
+          </div>
+          <div class="error-log" v-else v-html="err" > </div>
 
-        <div class="row d-flex justify-content-center align-item-center" v-else>
+        </div>
+      </div>
+    </main>
+
+    <!-- 
+    <div id="app"  v-cloak>
+      <div class="container">
+        <div class="row">
           <div class="col-12 mt-3 mt-md-5 content">
             <input
               type="text"
@@ -89,7 +118,7 @@
           />
           <img
             src="Resources/haze.gif"
-            v-else-if="typeof weather.main != 'undefined' && (weather.weather[0].main =='Mist' ||weather.weather[0].main =='Haze' || weather.weather[0].main =='Fog')"
+            v-else-if="typeof weather.main != 'undefined' && (weather.weather[0].main =='Mist' || weather.weather[0].main =='Haze' || weather.weather[0].main =='Fog')"
           />
 
           <img
@@ -103,10 +132,10 @@
           />
         </div>
       </transition>
-    </div>
+    </div> -->
 
     <!-- Optional JavaScript -->
-    <script src="vue.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
     <script src="main.js"></script>
   </body>
 </html>

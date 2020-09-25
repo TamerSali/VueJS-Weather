@@ -1,0 +1,97 @@
+[v-cloak] > * {
+  display: none;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "montserrat", sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  color: white;
+}
+
+.container .search-bar {
+  display: block;
+  margin: 20px auto 0 auto;
+  width: 98%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 0px 16px 0px 16px;
+  transition: 0.4s;
+}
+.container .search-bar:focus {
+  box-shadow: 0px 0px 16px white;
+  border-radius: 16px 0px 16px 0px;
+}
+.info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5), 0px 0px 5px rgba(0, 0, 0, 0.5);
+  line-height: 50px;
+}
+.info h1 {
+  font-size: 3rem;
+}
+h3 {
+  font-size: 1rem;
+}
+.info h1.temperature {
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  padding: 20px 0 20px 0;
+  width: 50%;
+  margin: 10px auto 10px auto;
+  animation: animate 3s infinite alternate;
+  text-shadow: none;
+}
+
+.error-log {
+  position: absolute;
+  font-size: 2rem;
+  top: 50%;
+  left: 50%;
+  width: 66%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.error-log p {
+  color: rgba(255, 255, 255, 1);
+  background-color: #d72828;
+ }
+.error-log img {
+height: 100px;
+  }
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 0.4s;
+}
+
+@media only screen and (max-width: 768px) {
+  .error-log {
+    font-size: 1.5rem;
+  }
+}
+@keyframes animate {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 40px white;
+  }
+}
