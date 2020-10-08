@@ -7,6 +7,10 @@
   box-sizing: border-box;
   font-family: "montserrat", sans-serif;
 }
+body{
+
+  position: relative;
+}
 
 .container {
   display: grid;
