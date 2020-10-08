@@ -7,24 +7,27 @@
   box-sizing: border-box;
   font-family: "montserrat", sans-serif;
 }
-
-.container {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  color: white;
+body {
+  height: 100%;
+  width: 100%;
 }
-.container .content {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: hidden;
+  color: white;
   min-height: 100vh;
- }
+}
 
 .container .search-bar {
+  position: fixed;
+  top: 5%;
   display: block;
-  margin: 20px auto 0 auto;
   width: 98%;
   padding: 10px;
   outline: none;
