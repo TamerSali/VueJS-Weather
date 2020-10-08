@@ -9,15 +9,18 @@
 }
 
 .container {
-  display: grid;
-  min-height: 100vh;
-  grid-template-columns: 1fr;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
   color: white;
 }
+.container .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+ }
 
 .container .search-bar {
   display: block;
@@ -34,11 +37,6 @@
   border-radius: 16px 0px 16px 0px;
 }
 .info {
-  position: absolute;
-  bottom: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5), 0px 0px 5px rgba(0, 0, 0, 0.5);
   line-height: 50px;

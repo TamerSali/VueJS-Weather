@@ -9,7 +9,6 @@ Vue.createApp({
             err: "",
         }
     },
-
     computed: {
         coverImage() {
             if (this.weather.main) {
