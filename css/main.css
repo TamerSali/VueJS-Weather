@@ -9,10 +9,9 @@
 }
 
 .container {
-  position: relative;
   display: grid;
-  grid-template-columns: 1fr;
   min-height: 100vh;
+  grid-template-columns: 1fr;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
