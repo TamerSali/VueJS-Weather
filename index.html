@@ -44,97 +44,18 @@
             </transition>
             <transition enter-active-class="animated fadeIn" mode="out-in">
               <h1 class="temperature" :key="weather.main.temp">
-                <b>{{ Math.round(weather.main.temp)}}°c</b>
+                <strong>{{ Math.round(weather.main.temp)}}°c</strong>
               </h1>
             </transition>
             <transition enter-active-class="animated tada" mode="out-in">
               <h2 :key="weather.main">{{weather.weather[0].main}}</h2>
             </transition>
           </div>
-          <div class="error-log" v-else v-html="err" > </div>
-
+          <div class="error-log" v-else v-html="err"></div>
         </div>
       </div>
     </main>
 
-    <!-- 
-    <div id="app"  v-cloak>
-      <div class="container">
-        <div class="row">
-          <div class="col-12 mt-3 mt-md-5 content">
-            <input
-              type="text"
-              name="Search"
-              placeholder="Search..."
-              class="form-control search-bar"
-              v-model="query"
-              @keyup.enter="fetchWeather"
-            />
-            <div v-if="typeof weather.main!='undefined' ">
-              <transition enter-active-class="animated bounceIn" mode="out-in">
-                <h1 class="text-white mb-sm-3 mb-3" :key="weather.name">
-                  {{ weather.name }},{{ weather.sys.country }}
-                </h1>
-              </transition>
-              <transition enter-active-class="animated bounceIn" appears>
-                <h4 class="text-light mb-sm-3 mb-4">
-                  <i>{{dateBuilder()}}</i>
-                </h4>
-              </transition>
-
-              <transition enter-active-class="animated fadeIn" mode="out-in">
-                <h1
-                  class="text-black mb-sm-3 mt-4 mb-3"
-                  :key="weather.main.temp"
-                >
-                  <b class="p-2 bg-light rounded"
-                    >{{ Math.round(weather.main.temp)}}°c</b
-                  >
-                </h1>
-              </transition>
-              <transition enter-active-class="animated tada" mode="out-in">
-                <h2 class="text-white mb-sm-3 mb-2" :key="weather.main">
-                  {{weather.weather[0].main}}
-                </h2>
-              </transition>
-            </div>
-          </div>
-        </div>
-      </div>
-      <transition name="fade" appears>
-        <div :key="weather.main">
-          <img
-            src="Resources/clear.gif"
-            v-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Clear'"
-          />
-
-          <img
-            src="Resources/clouds.gif"
-            v-else-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Clouds'"
-          />
-          <img
-            src="Resources/rainy.gif"
-            v-else-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Rain'"
-          />
-          <img
-            src="Resources/haze.gif"
-            v-else-if="typeof weather.main != 'undefined' && (weather.weather[0].main =='Mist' || weather.weather[0].main =='Haze' || weather.weather[0].main =='Fog')"
-          />
-
-          <img
-            src="Resources/snow.gif"
-            v-else-if="typeof weather.main != 'undefined' && weather.weather[0].main =='Snow'"
-          />
-
-          <img
-            src="Resources/weather.jpg"
-            v-else="typeof weather.main != 'undefined'"
-          />
-        </div>
-      </transition>
-    </div> -->
-
-    <!-- Optional JavaScript -->
     <script src="https://unpkg.com/vue@next"></script>
     <script src="main.js"></script>
   </body>
